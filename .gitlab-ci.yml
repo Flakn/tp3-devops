@@ -2,10 +2,16 @@ stages:
   - test
   - deploy
 
-test:
+Test:
+  stage: test
   script:
-    - "python -m unittest test.py"
+    - apk add --no-cache python3 py3-pip
+    - pip3 install --break-system-packages --no-cache-dir -r requirements.txt
+    - python -m unittest test.py
 
-deploy:
+Deploy:
+  stage: deploy
   script:
     - echo "Deployment..."
+  only:
+    - develop
