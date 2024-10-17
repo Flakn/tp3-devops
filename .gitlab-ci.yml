@@ -1,0 +1,11 @@
+stages:
+  - test
+  - deploy
+
+test:
+  script:
+    - "python -m unittest test.py"
+
+deploy:
+  script:
+    - echo "Deployment..."
